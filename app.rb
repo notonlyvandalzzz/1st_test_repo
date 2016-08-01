@@ -57,6 +57,17 @@ get '/contacts' do
   erb :contacts
 end
 
+post '/contacts' do
+  @email = params[:email]
+  @msgtext = params[:message]
+  f = File.open("./public/smessages.txt","a")
+  f.write  "User: #{@email}, message: #{@msgtext}\n"
+  f.close
+  @title = "Thank you"
+  @message = "Your message to us has been sent"
+  erb :message
+end
+
 get '/appoint' do
   erb :appoint
 end
@@ -65,11 +76,12 @@ post '/appoint' do
   @username = params[:username]
   @phone = params[:phone]
   @datetime = params[:datetime]
+  @barber = params[:barber]
   @title = "Thank you, #{@username}"
   @message = "We'll be waiting for you at #{@datetime}"
   
   f = File.open("./public/susers.txt","a")
-  f.write  "User: #{@username}, phone: #{@phone}, date: #{@datetime}\n"
+  f.write  "User: #{@username}, phone: #{@phone}, barber: #{@barber}, date: #{@datetime}\n"
   f.close
   erb :message
 end
