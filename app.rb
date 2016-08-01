@@ -48,3 +48,28 @@ get '/secure/place' do
   erb 'This is a secret place that only <%=session[:identity]%> has access to!'
   erb :secret_area
 end
+
+get '/about' do
+  erb :about
+end
+
+get '/contacts' do
+  erb :contacts
+end
+
+get '/appoint' do
+  erb :appoint
+end
+
+post '/appoint' do
+  @username = params[:username]
+  @phone = params[:phone]
+  @datetime = params[:datetime]
+  @title = "Thank you, #{@username}"
+  @message = "We'll be waiting for you at #{@datetime}"
+  
+  f = File.open("./public/susers.txt","a")
+  f.write  "User: #{@username}, phone: #{@phone}, date: #{@datetime}\n"
+  f.close
+  erb :message
+end
