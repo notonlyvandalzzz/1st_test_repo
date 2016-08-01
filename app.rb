@@ -53,11 +53,11 @@ get '/about' do
   erb :about
 end
 
-get '/contacts' do
+get '/contactus' do
   erb :contacts
 end
 
-post '/contacts' do
+post '/contactus' do
   @email = params[:email]
   @msgtext = params[:message]
   f = File.open("./public/smessages.txt","a")
