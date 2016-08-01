@@ -1,2 +1,2 @@
-# 1st_test_repo
+# 1st test repo
 Test only plz ignore
