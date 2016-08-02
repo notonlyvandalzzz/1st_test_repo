@@ -78,6 +78,17 @@ post '/appoint' do
   @datetime = params[:datetime]
   @barber = params[:barber]
   @color = params[:colorpicker]
+  err_h = {
+    :username => 'Please enter username',
+    :phone => 'Please enter phone number',
+    :datetime => 'Please select date and time',
+      }
+  err_h.each do |key, value| 
+      if params[key] == ''
+        @error = err_h[key]
+        return erb :appoint
+      end
+  end
   @title = "Thank you, #{@username}"
   @message = "We'll be waiting for you at #{@datetime}"
   

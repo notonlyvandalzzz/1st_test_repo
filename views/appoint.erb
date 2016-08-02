@@ -4,7 +4,11 @@
 	<div class="form-group">
     <label for="exampleInputName2" class="col-sm-2 control-label">Enter your name</label>
     <div class="col-sm-10">
-    	<input type="text" class="form-control" id="exampleInputName2" placeholder="Your Name" name="username" size="30" width="60%" required="">
+    	<input type="text" class="form-control" id="exampleInputName2" placeholder="Your Name" name="username" size="30" required="" width="60%"  
+    	<%if @username then %>
+    		value="<%=@username%>"
+    	<% end %>
+    	>
     </div>
   </div>
   <div class="form-group">
