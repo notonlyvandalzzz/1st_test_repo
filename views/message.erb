@@ -1,2 +1,10 @@
 <h2><%= @title %></h2>
 <h3><%= @message %></h3>
+<script type="text/javascript">
+$(document).ready(function () {
+    // Handler for .ready() called.
+    window.setTimeout(function () {
+        location.href = "http://localhost:4567";
+    }, 3000);
+});
+</script>

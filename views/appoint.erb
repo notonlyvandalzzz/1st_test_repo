@@ -45,7 +45,7 @@
 	  <option value="#ff887c">Red</option>
 	  <option value="#dc2127">Bold red</option>
 	  <option value="#dbadff">Purple</option>
-	  <option value="#e1e1e1">Gray</option>
+	  <option value="#e1e1e1">No color</option>
 	</select>
   </div>
   </div>
@@ -56,6 +56,8 @@
   </div>
 </form>
 <script type="text/javascript">
-$('#chgonclick').css('background-color','#505050');
-$('select[name="colorpicker"]').simplecolorpicker('selectColor', '#fbd75b');
+//$('#chgonclick').css('background-color','#505050');
+$(function() {
+	$('select[name="colorpicker"]').simplecolorpicker('selectColor', '#e1e1e1');
+});
 </script>
