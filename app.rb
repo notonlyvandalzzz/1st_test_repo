@@ -77,11 +77,12 @@ post '/appoint' do
   @phone = params[:phone]
   @datetime = params[:datetime]
   @barber = params[:barber]
+  @color = params[:colorpicker]
   @title = "Thank you, #{@username}"
   @message = "We'll be waiting for you at #{@datetime}"
   
   f = File.open("./public/susers.txt","a")
-  f.write  "User: #{@username}, phone: #{@phone}, barber: #{@barber}, date: #{@datetime}\n"
+  f.write  "User: #{@username}, phone: #{@phone}, barber: #{@barber}, color: #{@color}, date: #{@datetime}\n"
   f.close
   erb :message
 end

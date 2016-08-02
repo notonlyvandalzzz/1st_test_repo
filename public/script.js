@@ -1,0 +1,3 @@
+// simple script
+
+//alert('Welcome!');
