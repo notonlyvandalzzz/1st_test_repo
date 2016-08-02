@@ -83,11 +83,15 @@ post '/appoint' do
     :phone => 'Please enter phone number',
     :datetime => 'Please select date and time',
       }
-  err_h.each do |key, value| 
-      if params[key] == ''
-        @error = err_h[key]
-        return erb :appoint
-      end
+  # err_h.each do |key, value| 
+  #     if params[key] == ''
+  #       @error = err_h[key]
+  #       return erb :appoint
+  #     end
+  # end
+  @error = err_h.select {|k,v| params[k] == ''}.values.join(', ')
+  if @error != ''
+    return erb :appoint
   end
   @title = "Thank you, #{@username}"
   @message = "We'll be waiting for you at #{@datetime}"
