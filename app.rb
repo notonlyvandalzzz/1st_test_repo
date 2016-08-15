@@ -45,7 +45,7 @@ get '/logout' do
 end
 
 get '/secure/place' do
-  erb 'This is a secret place that only <%=session[:identity]%> has access to!'
+  # erb 'This is a secret place that only <%=session[:identity]%> has access to!'
   erb :secret_area
 end
 
