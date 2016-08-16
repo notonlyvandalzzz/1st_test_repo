@@ -61,6 +61,10 @@ end
 post '/contactus' do
   @email = params[:email]
   @msgtext = params[:message]
+
+  msgdb = SQLite3::Database.new 'data.db'
+  msgdb.execute( "INSERT INTO contact ( email, message ) VALUES ( ?, ? )", [@email, @msgtext])
+  msgdb.close
   f = File.open("./public/smessages.txt","a")
   f.write  "User: #{@email}, message: #{@msgtext}\n"
   f.close
@@ -90,19 +94,19 @@ post '/appoint' do
   #       return erb :appoint
   #     end
   # end
-  @error = err_h.select {|k,v| params[k] == ''}.values.join(', ')
-  if @error != ''
-    return erb :appoint
-  end
+  # @error = err_h.select {|k,v| params[k] == ''}.values.join(', ')
+  # if @error != ''
+  #   return erb :appoint
+  # end
   @title = "Thank you, #{@username}"
   @message = "We'll be waiting for you at #{@datetime}"
 
   db = SQLite3::Database.new 'data.db'
   db.execute( "INSERT INTO data ( name, phone, datetime,barber,color ) VALUES ( ?, ?, ?, ?, ? )", [@username, @phone, @datetime, @barber, @color])
   db.close 
-  
-  f = File.open("./public/susers.txt","a")
-  f.write  "User: #{@username}, phone: #{@phone}, barber: #{@barber}, color: #{@color}, date: #{@datetime}\n"
-  f.close
+
+  # f = File.open("./public/susers.txt","a")
+  # f.write  "User: #{@username}, phone: #{@phone}, barber: #{@barber}, color: #{@color}, date: #{@datetime}\n"
+  # f.close
   erb :message
 end
