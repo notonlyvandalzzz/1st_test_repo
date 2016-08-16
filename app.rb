@@ -105,8 +105,5 @@ post '/appoint' do
   db.execute( "INSERT INTO data ( name, phone, datetime,barber,color ) VALUES ( ?, ?, ?, ?, ? )", [@username, @phone, @datetime, @barber, @color])
   db.close 
 
-  # f = File.open("./public/susers.txt","a")
-  # f.write  "User: #{@username}, phone: #{@phone}, barber: #{@barber}, color: #{@color}, date: #{@datetime}\n"
-  # f.close
   erb :message
 end
