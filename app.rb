@@ -65,9 +65,7 @@ post '/contactus' do
   msgdb = SQLite3::Database.new 'data.db'
   msgdb.execute( "INSERT INTO contact ( email, message ) VALUES ( ?, ? )", [@email, @msgtext])
   msgdb.close
-  # f = File.open("./public/smessages.txt","a")
-  # f.write  "User: #{@email}, message: #{@msgtext}\n"
-  # f.close
+
   @title = "Thank you"
   @message = "Your message to us has been sent"
   erb :message
