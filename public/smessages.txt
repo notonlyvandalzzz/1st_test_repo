@@ -1,1 +1,2 @@
 User: 1@23.com, message: Sample message
+User: 123@ru.ru, message: Text message here

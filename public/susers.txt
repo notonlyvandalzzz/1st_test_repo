@@ -2,3 +2,5 @@ User: One, phone: 1234441234, date: 12.02.2000
 User: yyy, phone: 4534676, barber: opt2, date: 15.12.1155
 User: OOO, phone: 3240237857, barber: opt2, date: 2016-08-02T11:30
 User: YYY, phone: 23423455234, barber: opt2, color: #7ae7bf, date: 2016-08-02T15:30
+User: One, phone: 45782934, barber: opt2, color: #7bd148, date: 2016-08-17T10:30
+User: Two, phone: 0560688364, barber: opt2, color: #fbd75b, date: 2016-08-18T13:00
