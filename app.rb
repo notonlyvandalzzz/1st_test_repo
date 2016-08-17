@@ -48,8 +48,15 @@ get '/logout' do
 end
 
 get '/secure/place' do
+  @arr_app = []
   # erb 'This is a secret place that only <%=session[:identity]%> has access to!'
+  dbread = SQLite3::Database.new 'data.db'
+
+  dbread.execute 'select * from data' do |row|
+    @arr_app << row
+  end
   erb :secret_area
+  dbread.close
 end
 
 get '/about' do
