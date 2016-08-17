@@ -53,9 +53,10 @@ get '/secure/place' do
   dbread = SQLite3::Database.new 'data.db'
   dbread.results_as_hash = true
 
-  dbread.execute 'select * from data order by id desc' do |row|
-    @arr_app << row
-  end
+  # dbread.execute 'select * from data order by id desc' do |row|
+  #   @arr_app << row
+  # end
+  @usresults = dbread.execute 'select * from data order by id desc'
   erb :secret_area
   dbread.close
 end
