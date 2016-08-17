@@ -102,7 +102,7 @@ post '/appoint' do
   @message = "We'll be waiting for you at #{@datetime}"
 
   db = SQLite3::Database.new 'data.db'
-  db.execute( "INSERT INTO data ( name, phone, datetime,barber,color ) VALUES ( ?, ?, ?, ?, ? )", [@username, @phone, @datetime, @barber, @color])
+  db.execute( "INSERT INTO data ( name, phone, datetime, barber, color ) VALUES ( ?, ?, ?, ?, ? )", [@username, @phone, @datetime, @barber, @color])
   db.close 
 
   erb :message
