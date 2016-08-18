@@ -57,7 +57,7 @@ get '/secure/place' do
   #   @arr_app << row
   # end
   @usresults = dbread.execute 'select * from data order by id desc'
-  @testparam = 'AAA'
+  @testparam = "AAA"
   erb :secret_area
   dbread.close
 end
@@ -80,6 +80,7 @@ post '/contactus' do
 
   @title = "Thank you"
   @message = "Your message to us has been sent"
+  @testparam = "BBB"
   erb :message
 end
 
