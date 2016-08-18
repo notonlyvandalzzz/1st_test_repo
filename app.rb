@@ -4,10 +4,8 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 
-
 configure do
   enable :sessions
-  @testparam = "AAA"
 end
 
 helpers do
