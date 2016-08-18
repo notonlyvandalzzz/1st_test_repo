@@ -7,6 +7,7 @@ require 'sqlite3'
 
 configure do
   enable :sessions
+  @testparam = "AAA"
 end
 
 helpers do
@@ -57,7 +58,6 @@ get '/secure/place' do
   #   @arr_app << row
   # end
   @usresults = dbread.execute 'select * from data order by id desc'
-  @testparam = "AAA"
   erb :secret_area
   dbread.close
 end
