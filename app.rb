@@ -12,13 +12,6 @@ end
 
 configure do
   enable :sessions
-  db = get_db
-  db.execute 'CREATE TABLE IF NOT EXIST "barbers" 
-  (
-  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-  "name" TEXT,
-  "optname" TEXT
-   )'
 end
 
 helpers do
@@ -65,6 +58,7 @@ get '/secure/place' do
 #  @usresults = dbread.execute 'select * from data order by id desc'
   db = get_db
   @app_hash = db.execute 'select * from data order by id desc'
+  @barb_hash = db.execute 'select * from barbers order by id'
   @sample = "Sample"
   erb :secret_area
 end
