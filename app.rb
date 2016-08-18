@@ -81,6 +81,8 @@ post '/contactus' do
 
   @title = "Thank you"
   @message = "Your message to us has been sent"
+  where_user_came_from = session[:previous_url] || '/'
+  @last = request.host + where_user_came_from
   erb :message
 end
 
@@ -116,7 +118,8 @@ post '/appoint' do
 
   dba = get_db  
   dba.execute( "INSERT INTO data ( name, phone, datetime, barber, color ) VALUES ( ?, ?, ?, ?, ? )", [@username, @phone, @datetime, @barber, @color])
-
+  where_user_came_from = session[:previous_url] || '/'
+  @last = request.host + where_user_came_from
   erb :message
 end
 
@@ -127,7 +130,9 @@ post '/barberadd' do
   dbb = get_db
   dbb.execute( "INSERT INTO barbers (barber, optname) VALUES ( ?, ?)", [@barbername, @optname])
   @title = "Complete"
-  @message = "Barber #{@barbername} with inner name #{@optname} has beed added " + request.host + " " + session[:previous_url]
+  @message = "Barber #{@barbername} with inner name #{@optname} has beed added"
+  where_user_came_from = session[:previous_url] || '/'
+  @last = request.host + where_user_came_from
   erb :message
   end
 end
@@ -137,6 +142,8 @@ post '/barberdel' do
   # dbb = get_db
   # dbb.execute ("DELETE FROM barbers WHERE id=?",[@bid])
   @title = "Complete"
-  @message = "Barber with id #{@bid} has beed removed " + session[:previous_url]
+  @message = "Barber with id #{@bid} has beed removed"
+  where_user_came_from = session[:previous_url] || '/'
+  @last = request.host + where_user_came_from
   erb :message
 end
