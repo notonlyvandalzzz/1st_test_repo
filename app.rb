@@ -80,7 +80,6 @@ post '/contactus' do
 
   @title = "Thank you"
   @message = "Your message to us has been sent"
-  @testparam = "BBB"
   erb :message
 end
 
