@@ -127,15 +127,15 @@ post '/barberadd' do
   dbb = get_db
   dbb.execute( "INSERT INTO barbers (barber, optname) VALUES ( ?, ?)", [@barbername, @optname])
   @title = "Complete"
-  @message = "Barber #{@barbername} with inner name #{@optname} has beed added " + session[:previous_url]
+  @message = "Barber #{@barbername} with inner name #{@optname} has beed added " + request.host + " " + session[:previous_url]
   erb :message
   end
 end
 
 post '/barberdel' do
   @bid = params[:id]
-  dbb = get_db
-  dbb.execute ("DELETE FROM BARBERS WHERE id=?",[@bid])
+  # dbb = get_db
+  # dbb.execute ("DELETE FROM barbers WHERE id=?",[@bid])
   @title = "Complete"
   @message = "Barber with id #{@bid} has beed removed " + session[:previous_url]
   erb :message
