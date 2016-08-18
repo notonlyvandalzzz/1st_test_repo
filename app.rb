@@ -85,6 +85,8 @@ post '/contactus' do
 end
 
 get '/appoint' do
+  db = get_db
+  @barba_hash = db.execute 'select * from barbers order by id'
   erb :appoint
 end
 
