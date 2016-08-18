@@ -54,16 +54,12 @@ end
 
 get '/secure/place' do
     # erb 'This is a secret place that only <%=session[:identity]%> has access to!'
-# dbr = SQLite3::Database.new 'data.db'  
-# dbr.results_as_hash = true
 
-  # dbread.execute 'select * from data order by id desc' do |row|
-  #   @arr_app << row
-  # end
 #  @usresults = dbread.execute 'select * from data order by id desc'
+  db = get_db
+  @app_hash = db.execute 'select * from data order by id desc'
   @sample = "Sample"
   erb :secret_area
-#  dbr.close
 end
 
 get '/about' do
