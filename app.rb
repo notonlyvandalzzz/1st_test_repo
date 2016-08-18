@@ -47,8 +47,7 @@ get '/logout' do
 end
 
 get '/secure/place' do
-  @arr_app = []
-  # erb 'This is a secret place that only <%=session[:identity]%> has access to!'
+    # erb 'This is a secret place that only <%=session[:identity]%> has access to!'
   dbread = SQLite3::Database.new 'data.db'
   dbread.results_as_hash = true
 
