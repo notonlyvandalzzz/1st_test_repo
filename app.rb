@@ -12,6 +12,13 @@ end
 
 configure do
   enable :sessions
+  db = get_db
+  db.execute 'CREATE TABLE IF NOT EXIST "barbers" 
+  (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "name" TEXT,
+  "optname" TEXT
+   )'
 end
 
 helpers do
