@@ -124,6 +124,6 @@ post '/barberadd' do
   dbb = get_db
   dbb.execute( "INSERT INTO barbers (barber, optname) VALUES ( ?, ?)", [@barbername, @optname])
   @title = "Complete"
-  @message = "Barber #{@barbername} with inner name #{@optname} has beed added"
+  @message = "Barber #{@barbername} with inner name #{@optname} has beed added " + session[:previous_url]
   erb :message
 end
