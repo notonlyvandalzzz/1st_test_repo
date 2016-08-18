@@ -3,6 +3,12 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+def get_db
+  db = SQLite3::Database.new 'data.db'
+  db.results_as_hash = true
+  return db
+end
+
 
 configure do
   enable :sessions
@@ -72,9 +78,9 @@ post '/contactus' do
   @email = params[:email]
   @msgtext = params[:message]
 
-  msgdb = SQLite3::Database.new 'data.db'
+  msgdb = get_db
   msgdb.execute( "INSERT INTO contact ( email, message ) VALUES ( ?, ? )", [@email, @msgtext])
-  msgdb.close
+  
 
   @title = "Thank you"
   @message = "Your message to us has been sent"
@@ -110,9 +116,8 @@ post '/appoint' do
   @title = "Thank you, #{@username}"
   @message = "We'll be waiting for you at #{@datetime}"
 
-  db = SQLite3::Database.new 'data.db'
-  db.execute( "INSERT INTO data ( name, phone, datetime, barber, color ) VALUES ( ?, ?, ?, ?, ? )", [@username, @phone, @datetime, @barber, @color])
-  db.close 
+  dba = get_db  
+  dba.execute( "INSERT INTO data ( name, phone, datetime, barber, color ) VALUES ( ?, ?, ?, ?, ? )", [@username, @phone, @datetime, @barber, @color])
 
   erb :message
 end
