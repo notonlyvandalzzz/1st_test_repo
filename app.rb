@@ -117,3 +117,13 @@ post '/appoint' do
 
   erb :message
 end
+
+post '/barberadd' do
+  @barbername = params[:barbername]
+  @optname = params[:optname]
+  dbb = get_db
+  dbb.execute( "INSERT INTO barbers (barber, optname) VALUES ( ?, ?)", [@barbername, @optname])
+  @title = "Complete"
+  @message = "Barber #{@barbername} with inner name #{@optname} has beed added"
+  erb :message
+end
