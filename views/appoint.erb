@@ -1,6 +1,6 @@
 <h3>Please enter required info to make an appointment</h3>
 
-<form class="form-horizontal" action="/appoint" method="POST">
+<form class="form-horizontal" id="appoint_form" action="/appoint" method="POST">
 	<div class="form-group">
     <label for="exampleInputName2" class="col-sm-2 control-label">Enter your name</label>
     <div class="col-sm-10">
@@ -26,10 +26,10 @@
   <div class="form-group">
   <label for="exampleInputName2" class="col-sm-2 control-label">Select your barber</label>
   <div class="col-sm-10">
+    <select class="form-control" name="barber" form="appoint_form">
     <%@barba_hash.each do |row|%>
-  	<div class="radio">
-  	   <label><input type="radio" name="barber" id="optionsRadios1" value="<%=row["optname"]%>"><%=row["barber"]%></label>
-	   </div>
+       <option value="<%=row["optname"]%>"><%=row["barber"]%></option>
+     </select>
      <%end%>
   </div>
   </div>
