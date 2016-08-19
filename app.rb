@@ -57,7 +57,7 @@ get '/secure/place' do
 
 #  @usresults = dbread.execute 'select * from data order by id desc'
   db = get_db
-  @app_hash = db.execute 'select * from data order by id desc'
+  @app_hash = db.execute 'select * from data inner join barbers on data.barber=barbers.optname order by id desc'
   @barb_hash = db.execute 'select * from barbers order by id'
   @sample = "Sample"
   erb :secret_area
@@ -114,7 +114,7 @@ post '/appoint' do
   #   return erb :appoint
   # end
   @title = "Thank you, #{@username}"
-  @message = "We'll be waiting for you at #{@datetime}"
+  @message = "We'll be waiting for you at #{@datetime.tr("T"," ")}"
 
   dba = get_db  
   dba.execute( "INSERT INTO data ( name, phone, datetime, barber, color ) VALUES ( ?, ?, ?, ?, ? )", [@username, @phone, @datetime, @barber, @color])
