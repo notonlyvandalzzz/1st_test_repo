@@ -139,8 +139,8 @@ end
 
 post '/barberdel' do
   @bid = params[:id]
-  # dbb = get_db
-  # dbb.execute ("DELETE FROM barbers WHERE id=?",[@bid])
+  dbb = get_db
+  dbb.execute('DELETE FROM barbers WHERE id=?', [@bid])
   @title = "Complete"
   @message = "Barber with id #{@bid} has beed removed"
   where_user_came_from = session[:previous_url] || '/'
