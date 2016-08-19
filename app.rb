@@ -139,6 +139,7 @@ post '/barberadd' do
 end
 
 post '/barberdel' do
+  if session[:identity] then
   @bid = params[:id]
   dbb = get_db
   dbb.execute('DELETE FROM barbers WHERE id=?', [@bid])
@@ -147,4 +148,5 @@ post '/barberdel' do
   where_user_came_from = session[:previous_url] || '/'
   @last = where_user_came_from
   erb :message
+  end
 end
