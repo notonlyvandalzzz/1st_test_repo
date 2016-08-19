@@ -59,6 +59,7 @@ get '/secure/place' do
   db = get_db
   @app_hash = db.execute 'select * from data inner join barbers on data.barber=barbers.optname order by id desc'
   @barb_hash = db.execute 'select * from barbers order by id'
+  @barb_max = db.execute 'select id from barbers order by id desc limit 1'
   @sample = "Sample"
   erb :secret_area
 end
