@@ -28,7 +28,7 @@
   <div class="col-sm-10">
     <select class="form-control" name="barber" form="appoint_form">
     <%@barba_hash.each do |row|%>
-       <option value="<%=row["optname"]%>"><%=row["barber"]%></option>
+       <option value="<%=row["optname"]%>"<%=row["id"] == @barba_max["id"] ? ' selected' : ''%>><%=row["barber"]%></option>
      <%end%>
     </select>
   </div>

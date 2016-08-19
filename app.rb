@@ -90,6 +90,7 @@ end
 get '/appoint' do
   db = get_db
   @barba_hash = db.execute 'select * from barbers order by id'
+  @barba_max = db.execute 'select id from barbers order by id desc limit 1'
   erb :appoint
 end
 
